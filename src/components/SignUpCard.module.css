@@ -1,0 +1,12 @@
+.card {
+  display: grid;
+  grid-template-rows: auto;
+  text-align: center;
+}
+
+.CTAButton {
+  background: var(--clr-blue);
+  border-radius: var(--border-radius);
+  border: 0;
+  box-shadow: var(--shadow);
+}
