@@ -24,6 +24,12 @@ body {
   --fw-semi-bold: 600;
   --fw-bold: 700;
   --shadow: 0 8px 0 #0002;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
 }
 
 h1 {
@@ -39,7 +45,8 @@ a:not(.btn):hover {
   filter: brightness(130%);
 }
 
-.btn:hover, .btn:active {
+.btn:hover,
+.btn:active {
   filter: brightness(115%);
 }
 

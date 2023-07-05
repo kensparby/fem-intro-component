@@ -1,8 +1,13 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useReducer } from "react";
-import { ActionType, reducer } from "@/app/utils/reducer";
+import { ActionType, reducer } from "@/utils/reducer";
 import styles from "./SignUpForm.module.css";
 
-const SignUpForm = ({setIsSubmitted}: {setIsSubmitted: (value: boolean) => void}) => {
+const SignUpForm = ({
+  setIsSubmitted,
+}: {
+  setIsSubmitted: (value: boolean) => void;
+}) => {
   const initialState = {
     firstName: "",
     lastName: "",
@@ -15,7 +20,6 @@ const SignUpForm = ({setIsSubmitted}: {setIsSubmitted: (value: boolean) => void}
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // Do something with the form data (e.g., send it to a server)
     setIsSubmitted(true);
     console.log(
       `Form submitted: ${firstName}, ${lastName}, ${email}, ${password}`
@@ -35,18 +39,19 @@ const SignUpForm = ({setIsSubmitted}: {setIsSubmitted: (value: boolean) => void}
 
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     const { valueMissing, patternMismatch } = e.target.validity;
-    const span = e.target.nextElementSibling;
+
+    const parent = e.target.parentElement;
     if (valueMissing || patternMismatch) {
-      // Add styles to indicate validity error
-      span?.classList.add(styles.input_errorspan_show);
-      e.target.classList.add(styles.input_invalid);
-    } else if (
-      span?.classList.contains(styles.input_errorspan_show) ||
-      e.target.classList.contains(styles.input_invalid)
-    ) {
-      // else, remove them
-      span?.classList.remove(styles.input_errorspan_show);
-      e.target.classList.remove(styles.input_invalid);
+      parent?.classList.add(styles.input_invalid);
+    } else {
+      parent?.classList.add(styles.animated);
+      e.target.nextElementSibling?.classList.add(styles.animated);
+
+      setTimeout(() => {
+        parent?.classList.remove(styles.input_invalid);
+        parent?.classList.remove(styles.animated);
+        e.target.nextElementSibling?.classList.remove(styles.animated);
+      }, 400);
     }
   };
 
@@ -65,7 +70,8 @@ const SignUpForm = ({setIsSubmitted}: {setIsSubmitted: (value: boolean) => void}
           onChange={handleChange}
           required
         />
-        <span className={styles.input_error}>First name cannot be empty</span>
+        <img className={styles.icon_error} src="images/icon-error.svg" alt="" />
+        <span className={styles.span_error}>First name cannot be empty</span>
       </div>
 
       <div className={styles.wrapper_input}>
@@ -81,7 +87,8 @@ const SignUpForm = ({setIsSubmitted}: {setIsSubmitted: (value: boolean) => void}
           onChange={handleChange}
           required
         />
-        <span className={styles.input_error}>Last name cannot be empty</span>
+        <img className={styles.icon_error} src="images/icon-error.svg" alt="" />
+        <span className={styles.span_error}>Last name cannot be empty</span>
       </div>
 
       <div className={styles.wrapper_input}>
@@ -98,7 +105,8 @@ const SignUpForm = ({setIsSubmitted}: {setIsSubmitted: (value: boolean) => void}
           onChange={handleChange}
           required
         />
-        <span className={styles.input_error}>
+        <img className={styles.icon_error} src="images/icon-error.svg" alt="" />
+        <span className={styles.span_error}>
           Looks like this isn&apos;t a proper email
         </span>
       </div>
@@ -117,7 +125,8 @@ const SignUpForm = ({setIsSubmitted}: {setIsSubmitted: (value: boolean) => void}
           onChange={handleChange}
           required
         />
-        <span className={styles.input_error}>
+        <img className={styles.icon_error} src="images/icon-error.svg" alt="" />
+        <span className={styles.span_error}>
           Password must have upper and lower case letters, and at least one
           number.
         </span>

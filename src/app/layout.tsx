@@ -1,25 +1,51 @@
-import './reset.css';
-import './globals.css';
-import { Poppins } from 'next/font/google'
+import "./reset.css";
+import "./globals.css";
+import { Poppins } from "next/font/google";
 
 const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700']
-})
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 export const metadata = {
-  title: 'Intro Component with Sign Up Form | A challenge by Frontend Mentor',
-  description: 'Challenge completed by Ken Sparby, https://sparby.dev',
-}
+  title: "Intro Component with Sign Up Form | A challenge by Frontend Mentor",
+  description: "Challenge completed by Ken Sparby, https://sparby.dev",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
-      <body className={poppins.className}>{children}</body>
+      <body className={poppins.className}>
+        {children}
+        <footer>
+          <p>
+            Challenge by{" "}
+            <a
+              href="https://www.frontendmentor.io?ref=challenge"
+              target="_blank"
+            >
+              Frontend Mentor
+            </a>
+            . Coded by{" "}
+            <a
+              style={{
+                textDecoration: "underline",
+                textUnderlineOffset: "5px",
+                textDecorationThickness: "2px",
+                textDecorationColor: "currentColor",
+              }}
+              href="https://sparby.dev"
+            >
+              Ken Sparby
+            </a>
+            .
+          </p>
+        </footer>
+      </body>
     </html>
-  )
+  );
 }

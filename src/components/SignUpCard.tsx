@@ -1,8 +1,8 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import SignUpForm from "./SignUpForm";
 import styles from "./SignUpCard.module.css";
-import Success from "./Success";
+import ConfettiExplosion from "react-confetti-explosion";
 
 const CTAButton = () => {
   return (
@@ -14,16 +14,12 @@ const CTAButton = () => {
   );
 };
 
-const CardContainer = ({children}: {children: React.ReactNode}) => {
-  return (
-    <div className={styles.cardContainer}>
-      {children}
-    </div>
-  );
+const CardContainer = ({ children }: { children: React.ReactNode }) => {
+  return <div className={styles.cardContainer}>{children}</div>;
 };
 
 export default function SignUpCard() {
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false);
   return (
     <div className={styles.card}>
       <div className={styles.copy}>
@@ -36,11 +32,9 @@ export default function SignUpCard() {
       </div>
       <CTAButton />
       <CardContainer>
-        {isSubmitted ? (
-          <Success /> )
-          : (<SignUpForm setIsSubmitted={setIsSubmitted} />
-          )}
+        <SignUpForm setIsSubmitted={setIsSubmitted} />
       </CardContainer>
+      {isSubmitted && <ConfettiExplosion />}
     </div>
   );
 }

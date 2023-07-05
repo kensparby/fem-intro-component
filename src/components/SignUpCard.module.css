@@ -19,11 +19,12 @@
   padding: 1.5rem 4rem;
   font-weight: 400;
   font-size: 0.95rem;
-  transition: all 75ms linear;
+  transition: box-shadow 75ms linear, outline-color 75ms linear, top 75ms linear;
   position: relative;
   top: 0px;
   user-select: none;
   text-align: center;
+  height: fit-content;
 }
 
 .CTAButton:active {
@@ -63,5 +64,9 @@
 
   .card > :not(.copy) {
     grid-column: 2;
+  }
+
+  .CTAButton {
+    padding: 1rem 4rem;
   }
 }
