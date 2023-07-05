@@ -1,22 +1,46 @@
-import React from 'react';
+"use client"
+import React, { useState } from "react";
 import SignUpForm from "./SignUpForm";
-import styles from './SignUpCard.module.css'
+import styles from "./SignUpCard.module.css";
+import Success from "./Success";
 
 const CTAButton = () => {
   return (
-    <button className={styles.CTAButton}>
-      <p><span>Try it free 7 days</span> then $20/mo. thereafter</p>
-    </button>
-  )
-}
+    // @ts-ignore
+    <a href={null} className={`${styles.CTAButton} btn`} tabIndex={0}>
+      <span className={styles.buttonspan}>Try it free 7 days</span> then $20/mo.
+      thereafter
+    </a>
+  );
+};
+
+const CardContainer = ({children}: {children: React.ReactNode}) => {
+  return (
+    <div className={styles.cardContainer}>
+      {children}
+    </div>
+  );
+};
 
 export default function SignUpCard() {
+  const [isSubmitted, setIsSubmitted] = useState(false)
   return (
     <div className={styles.card}>
-      <h1 className={styles.title}>Learn to code by watching others</h1>
+      <div className={styles.copy}>
+        <h1 className={styles.title}>Learn to code by watching others</h1>
+        <p className={styles.text_body}>
+          See how experienced developers solve problems in real-time. Watching
+          scripted tutorials is great, but understanding how developers think is
+          invaluable.
+        </p>
+      </div>
       <CTAButton />
-      <p className={styles.body}></p>
-      <SignUpForm />
+      <CardContainer>
+        {isSubmitted ? (
+          <Success /> )
+          : (<SignUpForm setIsSubmitted={setIsSubmitted} />
+          )}
+      </CardContainer>
     </div>
-  )
+  );
 }

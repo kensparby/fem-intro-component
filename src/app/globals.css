@@ -1,6 +1,6 @@
 :root {
   --max-width: 1100px;
-  --border-radius: 12px;
+  --border-radius: 10px;
   --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
     "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
     "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
@@ -11,10 +11,10 @@
 
   /* Frontend Mentor colors */
   --clr-red: 0, 100%, 74%;
-  --clr-green: hsl(154, 59%, 51%);
-  --clr-blue: hsl(248, 32%, 49%);
-  --clr-dark-blue: hsl(249, 10%, 26%);
-  --clr-grayish-blue: hsl(246, 25%, 77%);
+  --clr-green: 154, 59%, 51%;
+  --clr-blue: 248, 32%, 49%;
+  --clr-dark-blue: 249, 10%, 26%;
+  --clr-grayish-blue: 246, 25%, 77%;
 }
 
 body {
@@ -23,21 +23,24 @@ body {
   --fw-medium: 500;
   --fw-semi-bold: 600;
   --fw-bold: 700;
-  --shadow: 0 10px 0 #0003;
+  --shadow: 0 8px 0 #0002;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+h1 {
+  font-size: 1.65rem;
+  font-weight: bold;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+a:not(.btn) {
+  cursor: pointer;
+}
+
+a:not(.btn):hover {
+  filter: brightness(130%);
+}
+
+.btn:hover, .btn:active {
+  filter: brightness(115%);
 }
 
 html,
@@ -47,8 +50,8 @@ body {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background-color: hsla(var(--clr-red), .98);
+  color: white;
+  background-color: hsla(var(--clr-red), 0.98);
   background-image: url(/images/bg-intro.png);
 }
 
@@ -57,8 +60,8 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+@media screen and (min-width: 701px) {
+  h1 {
+    font-size: 3rem;
   }
 }

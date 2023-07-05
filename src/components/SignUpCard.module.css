@@ -1,12 +1,67 @@
 .card {
   display: grid;
-  grid-template-rows: auto;
   text-align: center;
+  gap: 1.5rem 4rem;
+}
+
+.copy {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .CTAButton {
-  background: var(--clr-blue);
+  background: hsl(var(--clr-blue));
   border-radius: var(--border-radius);
   border: 0;
   box-shadow: var(--shadow);
+  padding: 1.5rem 4rem;
+  font-weight: 400;
+  font-size: 0.95rem;
+  transition: all 75ms linear;
+  position: relative;
+  top: 0px;
+  user-select: none;
+  text-align: center;
+}
+
+.CTAButton:active {
+  box-shadow: 0 4px 0 #0002;
+  top: 5px;
+}
+
+.CTAButton:focus {
+  outline: 3px solid white;
+}
+
+.text_body {
+  font-weight: 500;
+  line-height: 1.75;
+}
+
+.buttonspan {
+  font-weight: 700;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 701px) {
+  .card {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr auto;
+    text-align: left;
+  }
+
+  .copy {
+    grid-row: 1 / -1;
+    place-self: center;
+  }
+
+  .card > :not(.copy) {
+    grid-column: 2;
+  }
 }
