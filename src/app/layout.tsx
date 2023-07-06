@@ -12,6 +12,13 @@ export const metadata = {
   description: "Challenge completed by Ken Sparby, https://sparby.dev",
 };
 
+const styles = {
+  textDecoration: "underline",
+  textUnderlineOffset: "5px",
+  textDecorationThickness: "2px",
+  textDecorationColor: "currentColor",
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -22,7 +29,7 @@ export default function RootLayout({
       <body className={poppins.className}>
         {children}
         <footer>
-          <p>
+          <p style={{textAlign: 'center'}}>
             Challenge by{" "}
             <a
               href="https://www.frontendmentor.io?ref=challenge"
@@ -31,15 +38,7 @@ export default function RootLayout({
               Frontend Mentor
             </a>
             . Coded by{" "}
-            <a
-              style={{
-                textDecoration: "underline",
-                textUnderlineOffset: "5px",
-                textDecorationThickness: "2px",
-                textDecorationColor: "currentColor",
-              }}
-              href="https://sparby.dev"
-            >
+            <a style={styles} href="https://sparby.dev">
               Ken Sparby
             </a>
             .

@@ -24,12 +24,6 @@ body {
   --fw-semi-bold: 600;
   --fw-bold: 700;
   --shadow: 0 8px 0 #0002;
-  min-height: 100vh;
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
 }
 
 h1 {
@@ -60,6 +54,12 @@ body {
   color: white;
   background-color: hsla(var(--clr-red), 0.98);
   background-image: url(/images/bg-intro.png);
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
 }
 
 a {
@@ -68,6 +68,9 @@ a {
 }
 
 @media screen and (min-width: 701px) {
+  body {
+    padding: 2rem;
+  }
   h1 {
     font-size: 3rem;
   }
