@@ -4,6 +4,13 @@ import SignUpForm from "./SignUpForm";
 import styles from "./SignUpCard.module.css";
 import ConfettiExplosion from "react-confetti-explosion";
 
+const confettiProps = {
+  force: 1,
+  height: '200vh',
+  duration: 4000,
+  particleCount: 200
+}
+
 const CTAButton = () => {
   return (
     // @ts-ignore
@@ -34,7 +41,7 @@ export default function SignUpCard() {
       <CardContainer>
         <SignUpForm setIsSubmitted={setIsSubmitted} />
       </CardContainer>
-      {isSubmitted && <ConfettiExplosion />}
+      {isSubmitted && <ConfettiExplosion style={{marginInline: 'auto'}} {...confettiProps} />}
     </div>
   );
 }
